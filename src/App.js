@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Layout, Space, Typography } from 'antd';
+import { Link, Route, Switch } from 'react-router-dom';
+import { Navbar } from './component/index';
 
-function App() {
+
+ const app = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div className='app'>
+        <h1>Emmanuel</h1>
+        <div className='navBar'>
+            <Navbar />
+        </div>
+        <div className='main'>
 
-export default App;
+        </div>
+        <div className='footer'>
+
+        </div>
+    </div>
+  )
+}
+export default app;
