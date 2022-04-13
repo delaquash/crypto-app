@@ -6,11 +6,11 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 
 
  const Cryptocurrencies =({ simplified })=>{
-   const count = simplified ? 100 : 100;
+   const count = simplified ? 10 : 100;
   //  renamed data to cryptoList
    const { data:cryptoList, isFetching } = useGetCryptosQuery(count);
    const [ cryptos, setCryptos ] = useState([]);
-const [searchItem, setSearchItem] = useState('')
+   const [searchItem, setSearchItem] = useState('')
 
     
 
@@ -23,9 +23,11 @@ const [searchItem, setSearchItem] = useState('')
     if(isFetching) return 'Loading....'
   return (
     <>
-    <div className="search-crypto">
-        <Input type="text" placeholder='Search Cryptocurrency' onChange={(e) =>setSearchItem(e.target.value) } />
-    </div>
+    {!simplified && (
+        <div className="search-crypto">
+             <Input type="text" placeholder='Search Cryptocurrency' onChange={(e) =>setSearchItem(e.target.value) } />
+        </div>
+    )}
       <Row gutter={[ 32, 32]} className="crypto-card-container">
         {
           cryptos?.map((currency) => (
