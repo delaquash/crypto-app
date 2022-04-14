@@ -4,7 +4,6 @@ import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 
-
  const Cryptocurrencies =({ simplified })=>{
    const count = simplified ? 10 : 100;
   //  renamed data to cryptoList
