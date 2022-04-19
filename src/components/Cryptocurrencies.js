@@ -8,13 +8,12 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
    const count = simplified ? 10 : 100;
   //  renamed data to cryptoList
    const { data:cryptoList, isFetching } = useGetCryptosQuery(count);
-   const [ cryptos, setCryptos ] = useState([]);
+   const [ cryptos, setCryptos ] = useState();
    const [searchItem, setSearchItem] = useState('')
 
-    
-
+     
     useEffect(() => {
-      const filteredCrypto = cryptoList?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchItem.toLowerCase()));
+      const filteredCrypto = cryptoList?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchItem));
       setCryptos(filteredCrypto)
      
     }, [cryptoList, searchItem])
@@ -24,14 +23,15 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
     <>
     {!simplified && (
         <div className="search-crypto">
-             <Input type="text" placeholder='Search Cryptocurrency' onChange={(e) =>setSearchItem(e.target.value) } />
+             <Input
+                    placeholder='Search Cryptocurrency' onChange={(e) =>setSearchItem(e.target.value.toLowerCase()) } />
         </div>
     )}
       <Row gutter={[ 32, 32]} className="crypto-card-container">
         {
           cryptos?.map((currency) => (
             <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.uuid}>
-              <Link to={`/crypto/${currency.id}`}>
+              <Link to={`/crypto/${currency.uuid}`} key={currency.uuid}>
                 <Card
                   title={`${currency.rank}. ${currency.name}`}
                   extra={<img className='crypto-image' src={currency.iconUrl} alt="Coin"/>}
@@ -47,7 +47,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
         }
     </Row>
     </>
-  )
-}
+  );
+};
 
 export default Cryptocurrencies;
