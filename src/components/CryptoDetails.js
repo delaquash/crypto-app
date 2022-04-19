@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Select, Typography } from 'antd';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
@@ -10,7 +10,8 @@ const { Option } = Select;
 
 
  const CryptoDetails =()=>{
-   const { coinID } = useParams()
+   const { coinID } = useParams();
+   const [timePeriod, setTimePeriod] = useState('7d')
   return (
     <div>Emmanuel {coinID} </div>
   )
