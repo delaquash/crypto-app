@@ -7,14 +7,15 @@ import { Provider } from 'react-redux';
 import App from './App';
 import 'antd/dist/antd.css';
 import store from './app/store';
+// import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-        <React.StrictMode>
+  <React.StrictMode>
           <Provider store={store}>
             <Router>
               <App />
             </Router>
           </Provider>
-        </React.StrictMode>   
+        </React.StrictMode>  
 );
