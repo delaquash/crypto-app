@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Menu, Typography, Avatar } from 'antd';
 import { BulbOutlined, FundOutlined, HomeOutlined, MenuOutlined, MoneyCollectOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import icon from '../img/cryptocurrency.png'
 
-
 const Navbar =()=> {
-  return (
+    const [activeMenu, setActiveMenu] = useState(true)
+    const [screenSize, setScreenSize] = useState(null)
+
+    useEffect(() => {
+      const handleResize= ()=> setScreenSize(window.innerWidth)
+      window.addEventListener('resize', handleResize)
+      handleResize()
+      return() => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    
+    
+    return (
     <div className='nav-container'>
         <div className="logo-container">
             <Avatar src={icon} size="large" />
