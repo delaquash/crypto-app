@@ -18,6 +18,7 @@ const CryptoDetails = () => {
   const { data, isFetching } = useGetCryptosDetailsQuery(coinId);
   const { data: coinHistory } = useGetCryptosHistoryQuery({ coinId, timeperiod });
   const cryptoDetails = data?.data?.coin;
+  console.log(cryptoDetails)
 
   if (isFetching) return <Loader />;
 
@@ -58,7 +59,7 @@ const CryptoDetails = () => {
             <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
           </Col>
           {stats.map(({ icon, title, value }) => (
-            <Col className="coin-stats">
+            <Col className="coin-stats" key={stats.uuid}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
