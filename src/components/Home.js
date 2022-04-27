@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import News from './News';
 import Cryptocurrencies from './Cryptocurrencies';
+import Loader from './Loader';
+
 
 
 const { Title } = Typography;
 
- const Homepage = () =>{
+ const Home = () =>{
    const { data, isFetching } = useGetCryptosQuery(10);
    const globalStats = data?.data?.stats;
-    if(isFetching) return 'Loading....';
+   if (isFetching) return <Loader />;
 
   return (
     <>
@@ -40,5 +42,5 @@ const { Title } = Typography;
   )
 }
 
-export default Homepage;
+export default Home;
 

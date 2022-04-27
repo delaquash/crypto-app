@@ -1,4 +1,4 @@
-export { default as Homepage } from './Homepage.js';
+export { default as Home } from './Home.js';
 export { default as Navbar } from './Navbar';
 export { default as News } from './News';
 export { default as Cryptocurrencies } from './Cryptocurrencies';
